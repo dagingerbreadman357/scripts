@@ -1,1 +1,21 @@
 aws ec2 run-instances --image-id <value> --instance-type <value> --security-group-ids <value> --subnet-id <value> --key-name <value> --user-data <value>
+
+#create security group from aws cli
+
+aws ec2 create-security-group --group-name my-sg --description "test"
+
+#should come back with "GroupId": "sg-xxxxxxxxxxxx"
+
+
+
+#create ingress and egress firewall(sg) rules
+
+aws ec2 authorize-security-group-ingress --group-id sg-xxxxx --protocol tcp --port 80 --cidr 0.0.0.0/0
+
+#fill in sg, protocol, port#, cidr
+
+
+
+#create ec2 instance from cli
+
+aws ec2 run-instances --image-id ami-094125af156557ca2 --instance-type t2.micro --security-group-ids sg-06de6469226218515 --subnet-id subnet-06b3e133ee7522da6 --key-name Mypublickeys --user-data file://user-data-subnet-id.txt
